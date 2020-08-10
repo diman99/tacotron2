@@ -45,10 +45,10 @@ def prepare_dataloaders(hparams):
     valset = TextMelLoader(hparams.validation_files, hparams)
     collate_fn = TextMelCollate(hparams.n_frames_per_step)
 
-    #if hparams.distributed_run:
-       # train_sampler = DistributedSampler(trainset)
-        #shuffle = False
-    #else:
+    # if hparams.distributed_run:
+    # train_sampler = DistributedSampler(trainset)
+    #shuffle = False
+    # else:
     train_sampler = None
     shuffle = True
 
@@ -75,7 +75,7 @@ def load_model(hparams):
     if hparams.fp16_run:
         model.decoder.attention_layer.score_mask_value = finfo('float16').min
 
-    #if hparams.distributed_run:
+    # if hparams.distributed_run:
         #model = apply_gradient_allreduce(model)
 
     return model
@@ -175,7 +175,7 @@ def train(output_directory, log_directory, checkpoint_path, warm_start, n_gpus,
         model, optimizer = amp.initialize(
             model, optimizer, opt_level='O2')
 
-    #if hparams.distributed_run:
+    # if hparams.distributed_run:
         #model = apply_gradient_allreduce(model)
 
     criterion = Tacotron2Loss()

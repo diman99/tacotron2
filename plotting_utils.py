@@ -1,7 +1,7 @@
+import numpy as np
+import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pylab as plt
-import numpy as np
 
 
 def save_figure_to_numpy(fig):
